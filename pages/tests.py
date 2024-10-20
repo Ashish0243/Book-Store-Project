@@ -1,4 +1,4 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase,TestCase
 from django.urls import reverse,resolve
 from .views import HomePageView
 class HomepageTests(SimpleTestCase):
@@ -24,3 +24,15 @@ class HomepageTests(SimpleTestCase):
             view.func.__name__,
             HomePageView.as_view().__name__
         )
+
+class SignupPageTests(TestCase):
+    def setUp(self):
+        url=reverse('signup')
+        self.response=self.client.get(url)
+        
+    def test_signup_templates(self):
+        self.assertEqual(self.response.status_code,200)
+        self.assertTemplateUsed(self.response,'signup.html')
+        self.assertContains(self.response,'SIGNUP')
+        self.assertNotContains(self.response,'he he not supposed to be here ')
+    

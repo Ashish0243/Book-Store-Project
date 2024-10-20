@@ -2,4 +2,12 @@
 {% block title %} HOME {% endblock title %}
 {% block content %}
 <h1>HOMEPAGE</h1>
+{% if user.is_authenticated %}
+HI {{ user.email}}
+<a href="{% url 'logout' %}">LOGOUT</a>
+{% else %}
+<p>You are not logged in </p>
+<a href="{% url 'login' %}">LOGIN</a>
+<a href="{% url 'signup' %}">SIGNUP</a>
+{% endif %}
 {% endblock content %}
