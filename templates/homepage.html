@@ -1,7 +1,9 @@
 {% extends "_base.html" %}
+{% load static %}
 {% block title %} HOME {% endblock title %}
 {% block content %}
 <h1>HOMEPAGE</h1>
+<img classname="image" src="{% static 'images/trial.JPG' %}" alt="trial">
 {% if user.is_authenticated %}
 HI {{ user.email}}
 <a href="{% url 'logout' %}">LOGOUT</a>
