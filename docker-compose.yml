@@ -1,6 +1,9 @@
 services:
   web:
     build: .
+    environment:
+      - SECRET_KEY="django-insecure-7%j$$0swsn_a-!++(a#wipe60c%663l^=g$$myv7l*!dpgh^s*e7"
+      - DEBUG = 1
     command: python /books/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/books
@@ -8,6 +11,8 @@ services:
       - 8000:8000
     depends_on:
       - db
+ 
+
 
   db:
     image: postgres
@@ -15,3 +20,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
