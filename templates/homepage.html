@@ -6,10 +6,10 @@
 <img classname="image" src="{% static 'images/trial.JPG' %}" alt="trial">
 {% if user.is_authenticated %}
 HI {{ user.email}}
-<a href="{% url 'logout' %}">LOGOUT</a>
+<a href="{% url 'account_logout' %}">LOGOUT</a>
 {% else %}
 <p>You are not logged in </p>
-<a href="{% url 'login' %}">LOGIN</a>
-<a href="{% url 'signup' %}">SIGNUP</a>
+<a href="{% url 'account_login' %}">LOGIN</a>
+<a href="{% url 'account_signup' %}">SIGNUP</a>
 {% endif %}
 {% endblock content %}
